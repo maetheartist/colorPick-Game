@@ -1,4 +1,4 @@
-/* General Styling */
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -12,7 +12,7 @@ h1, .score{
     -webkit-text-fill-color: transparent;
 }
 .score{font-weight: 800;}
-/* Game Container */
+
 .container {
     background: white;
     padding: 20px;
@@ -22,7 +22,6 @@ h1, .score{
     margin: auto;
 }
 
-/* Color Box */
 #colorBox {
     width: 150px;
     height: 150px;
@@ -35,7 +34,6 @@ p{
     font-weight: bold;
 }
 
-/* Color Options */
 .options {
     display: flex;
     flex-wrap: wrap;
@@ -43,8 +41,8 @@ p{
     gap: 10px;
     margin-top: 10px;
 }
-/* Animation for correct answer */
-.correct-animation {
+
+.correct-animation{
     animation: correctEffect 0.5s ease-in-out;
 }
 
@@ -54,7 +52,6 @@ p{
     100% { transform: scale(1); }
 }
 
-/* Animation for incorrect answer */
 .incorrect-animation {
     animation: incorrectEffect 0.5s ease-in-out;
 }
@@ -79,20 +76,17 @@ p{
     transform: scale(1.1);
 }
 
-/* Game Status */
 #gameStatus {
     font-size: 18px;
     font-weight: bold;
     margin-top: 15px;
 }
 
-/* Score */
 #score {
     font-size: 16px;
     margin-top: 10px;
 }
 
-/* New Game Button */
 #newGameButton {
     background: #007BFF;
     color: white;
