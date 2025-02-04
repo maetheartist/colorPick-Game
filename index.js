@@ -13,12 +13,17 @@ const getRandomColor = () => {
 
 let correctColor;
 let score = 0;
-let hasAnswered = false; 
+let hasAnswered = false;
 
-const startGame = () => {
+const startGame = (resetScore = false) => {
   correctColor = getRandomColor();
   colorBox.style.backgroundColor = correctColor;
   hasAnswered = false;
+
+  if (resetScore) {
+    score = 0;
+    scoreDisplay.textContent = `Score: ${score}`;
+  }
 
   let colors = [correctColor];
   while (colors.length < 6) {
@@ -37,12 +42,11 @@ const startGame = () => {
     button.classList.remove("correct-animation", "incorrect-animation");
   });
 
-  gameStatus.textContent = "Guess the correct color!";
 };
 
 colorOptions.forEach((button) => {
   button.addEventListener("click", () => {
-    if (hasAnswered) return; 
+    if (hasAnswered) return;
 
     const selectedColor = button.dataset.color;
 
@@ -51,7 +55,9 @@ colorOptions.forEach((button) => {
       score++;
       scoreDisplay.textContent = `Score: ${score}`;
       button.classList.add("correct-animation");
-      hasAnswered = true; 
+      hasAnswered = true;
+
+      startGame();
     } else {
       gameStatus.textContent = "❌ Wrong! Try again.";
       button.classList.add("incorrect-animation");
@@ -59,6 +65,7 @@ colorOptions.forEach((button) => {
   });
 });
 
-newGameButton.addEventListener("click", startGame);
+newGameButton.addEventListener("click", () => startGame(true));
+
 
 startGame();
