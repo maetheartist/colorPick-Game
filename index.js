@@ -13,10 +13,12 @@ const getRandomColor = () => {
 
 let correctColor;
 let score = 0;
+let hasAnswered = false; 
 
 const startGame = () => {
   correctColor = getRandomColor();
   colorBox.style.backgroundColor = correctColor;
+  hasAnswered = false;
 
   let colors = [correctColor];
   while (colors.length < 6) {
@@ -40,17 +42,18 @@ const startGame = () => {
 
 colorOptions.forEach((button) => {
   button.addEventListener("click", () => {
+    if (hasAnswered) return; 
+
     const selectedColor = button.dataset.color;
 
     if (selectedColor === correctColor) {
       gameStatus.textContent = "✅ Correct!";
       score++;
       scoreDisplay.textContent = `Score: ${score}`;
-
       button.classList.add("correct-animation");
+      hasAnswered = true; 
     } else {
       gameStatus.textContent = "❌ Wrong! Try again.";
-
       button.classList.add("incorrect-animation");
     }
   });
